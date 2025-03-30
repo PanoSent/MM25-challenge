@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Avatar-based Multimodal Empathetic Conversation.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The ACM Multimedia 2025 Grand Challenge: Avatar-based Multimodal Empathetic Conversation</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <!--  <script src="./static/js/index.js"></script>-->
+    <style>
+        pre {outline: 1px solid #ccc; }
+         .string { color: green; }
+         .number { color: darkorange; }
+         .boolean { color: blue; }
+         .null { color: magenta; }
+         .key { color: red; }
+        ._table{width: 100%; border-collapse: collapse; border:0px;}
+        ._table thead tr {font-size: 13px; color: #2e3b45;  text-align: center; background-color: rgba(230, 255, 250, 0.92); font-weight:bold;}
+        ._table td{line-height: 20px; text-align: center; padding: 4px 10px 3px 10px; height: 18px;border: 0px solid #ffffff;}
+        ._table tbody tr {background: #fff; font-size: 13px; color: #393939;}
+        ._table tbody tr:nth-child(2n){ background: #f3f3f3;}
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">The ACM Multimedia 2025 Grand Challenge of Avatar-based Multimodal Empathetic Conversation</h1>
+
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- Data Link. -->
+                                <span class="link-block">
+                                    <a href="#introduction"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span>Introduction</span>
+                                    </a>
+                                </span>
+                                <!-- Data Link. -->
+                                <span class="link-block">
+                                    <a href="#dataset"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span>Dataset</span>
+                                    </a>
+                                </span>
+                                <!-- Paper Link. -->
+                                <span class="link-block">
+                                    <a href="#task"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span>Task & Evaluation</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="#submission"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span>Participate</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="#timeline"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span>Timeline</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="https://www.codabench.org/competitions/4897/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span>CodaBench</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section"style="margin-top: -50px;">
+        <div class="container is-max-desktop">
+
+            <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Leaderboard</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Congratulations to the winners!
+                        </p>
+                        <table class="._table table-bordered table-striped" align="center">
+                            <tbody align="center" valign="center">
+                            <tr>
+                                <td>Rank</td>
+                                <td>Team</td>
+                                <td>Score</td>
+                              </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>Token</td>
+                              <td>63.2064</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>USTC-IAT-United</td>
+                              <td>62.1149</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>ppjj</td>
+                                <td>59.8638</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>GXU-LIPE</td>
+                                <td>59.6864</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>DMCV</td>
+                                <td>59.3998</td>
+                            </tr>
+                            
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> -->
+            
+            <!-- Abstract. -->
+            <div id="introduction" class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Introduction</h2>
+                    <div class="content has-text-justified">
+
+                        <div style="text-align: center;">
+                            <img src="static/images/overview.png" width="90%" alt="">
+                            <p><b>Overview: AvaMERG Task.</b></p>
+                        </div>
+
+                        <p>
+                            We propose the Avatar-based Multimodal Empathetic Response Generation (AvaMERG) challenge on the ACM MM platform. Unlike traditional text-only empathetic response tasks, given a multimodal dialogue context, models are expected to generate an empathetic response that includes three synchronized components: textual reply, emotive speech audio, and expressive talking face video. 
+                        </p>
+
+                        <p>
+                            The challenge contains three subtasks, from easy to hard.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+            <!-- Paper video. -->
+            <div id="task" div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Challenge Task Definition and Metrtics</h2>
+                    <div class="content has-text-justified">
+                        <div style="text-align: center;">
+                            <img src="static/images/task1.png" width="90%" alt="">
+                            <p><b>Task 1: Text-Only Empathetic Response Generation.</b></p>
+                        </div>
+                        <p>
+                            <b>Task-1:</b> Participants are required to develop a model capable of processing multimodal dialogue contexts and generating textual empathic responses, with each response being associated with a suitable emotional label. The evaluation of this subtask is the emotion prediction accuracy (Acc) and Distinct-n (Dist-1/2).
+                        </p>
+                        
+                        <div style="text-align: center;">
+                            <img src="static/images/task2.png" width="90%" alt="">
+                            <p><b>Task 2: Multimodal-Aware Empathetic Response Generation.</b></p>
+                        </div>
+                        <p>
+                            <b>Task-2:</b> Participants are required to develop a model capable of processing multimodal dialogue contexts and generating empathetic responses. The evaluation of this subtask is the emotion prediction accuracy (Acc) and Distinct-n (Dist-1/2).
+                        <p>
+                        
+                        <div style="text-align: center;">
+                            <img src="static/images/task3.png" width="90%" alt="">
+                            <p><b>Task 3: Multimodal Empathetic Response Generation.</b></p>
+                        </div>
+                        <p>
+                            <b>Task-3:</b> Participants are required to develop a model capable of processing multimodal dialogue contexts and generating empathetic multimodal responses. The evaluation of this subtask is based on four metrics: emotion prediction accuracy (Acc), Fréchet Audio Distance (FAD) and Structural Similarity Index Measure (SSIM).
+                        </p>
+                        
+                        <div class="columns is-centered has-text-centered">
+                            <div>
+                                <h2 class="title is-3">Evaluation</h2>
+                                <div class="content has-text-justified">
+                                    <p>
+                          
+                                        For Subtask 1 and Subtask 2, we will rank the participants based on the Acc score. In case of a tie in Acc, the ranking will be determined by the Dist-1/2 scores. For Subtask 3, the ranking will be determined according to the following formula:
+                                         <p>
+                                          <b><em>Score = Acc + 0.8*SSIM + 0.3*FAD</em></b>
+                                         </p>
+
+                                          We provide python scripts for evaluation, please refer to the <a href="#baseline">baseline codes</a> "/challenge/evaluation.py".
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+             <!-- Datasets. -->
+            <div class="columns is-centered has-text-centered">
+                <div id="dataset" class="column is-four-fifths">
+                    <h2 class="title is-3">Dataset</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            The dataset for this challenge is derived from AvaMERG. It is a benchmark dataset for Avatar-based Multimodal Empathetic Response Generation. AvaMERG extended the original Empathetic Dialogue dataset by considering multimodal response. 
+                        </p>
+
+                        <p>
+                            Statistics of AvaMERG are shown in the following table.
+                        </p>
+                        <div class="publication-image">
+                            <img width="100%" src="./static/images/statistics.png">
+                          </div>
+                          <br>
+                        <p>
+                            Example of a sample:
+                        </p>
+                        <pre id="jsonShow">
+{
+    "conversation_id": "01118",
+    "speaker_profile": {
+        "age": "young", 
+        "gender": "male",
+        "timbre": "high",
+        "ID": 28
+    },
+    "listener_profile": {
+        "age": "young",
+        "gender": "female",
+        "timbre": "mid",
+        "ID": 18
+    },
+    "topic": "Life Events",
+    "turns": [
+        {
+            "turn_id": "0",
+            "context": "I was shocked when the Eagles won the Super Bowl.",
+            "dialogue_history": [
+                {
+                    "index": 0,
+                    "role": "speaker",
+                    "utterance": "I was shocked when the Eagles won the Super Bowl."
+                }
+            ],
+            "response": "Yes, I think everyone was shocked! The real question is, were you happy?",
+            "chain_of_empathy": {
+                "speaker_emotion": "surprised",
+                "event_scenario": "The Eagles winning the Super Bowl",
+                "emotion_cause": "Surprise at an unexpected sports victory",
+                "goal_to_response": "Determining the speaker's happiness about the win"
+            }
+        },
+        {
+            "turn_id": "1",
+            "context": "I was shocked when the Eagles won the Super Bowl.",
+            "dialogue_history": [
+                {
+                    "index": 0,
+                    "role": "speaker",
+                    "utterance": "I was shocked when the Eagles won the Super Bowl."
+                },
+                {
+                    "index": 1,
+                    "role": "listener",
+                    "utterance": "Yes, I think everyone was shocked! The real question is, were you happy?"
+                },
+                {
+                    "index": 2,
+                    "role": "speaker",
+                    "utterance": "I was very happy."
+                }
+            ],
+            "response": "That's awesome.. Hopefully they win again in the future!",
+            "chain_of_empathy": {
+                "speaker_emotion": "surprised",
+                "event_scenario": "The Philadelphia Eagles winning the Super Bowl.",
+                "emotion_cause": "Unexpected victory of the Eagles in the Super Bowl.",
+                "goal_to_response": "Reinforcing happiness and optimism about future games."
+            }
+        }
+    ]
+},</pre>
+                        <p>
+                            The datasets (audio/video) have been avaliable on <a href="https://pan.baidu.com/s/1flf2ZOfRAnEqPcSUUBJnMg?pwd=ih5n ">Baidu Drive</a> and the label json files are in the <a href="#baseline">baseline codes/data/</a>.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="columns is-centered has-text-centered">
+                <div id="timeline" class="column is-four-fifths">
+                    <h2 class="title is-3">Timeline</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Please note: The submission deadline is at 11:59 p.m. (<a herf="https://www.timeanddate.com/time/zones/aoe" style="color:red">Anywhere on Earth</a>) of the stated deadline date.
+                        </p>
+                        <table class="._table table-bordered table-striped" align="center">
+                            <tbody align="center" valign="center">
+                            <tr>
+                              <td>Training data and participant instruction release for all shared tasks</td>
+                              <td>15 Mar, 2025</td>
+                            </tr>
+                            <tr>
+                              <td>Evaluation deadline for all shared tasks</td>
+                              <td>XXX, 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Notification of all shared tasks</td>
+                                <td>XXX, 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Shared-task paper submission deadline</td>
+                                <td>XXX, 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Acceptance notification of shared-task papers</td>
+                                <td>XXX, 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Camera ready paper deadline</td>
+                                <td>XXX, 2025</td>
+                            </tr>
+                            
+
+
+                            <!-- <tr>
+                                <td><b style="color: red">Challenge Paper Submission Deadline</b>(follow <a href="https://2024.acmmm.org/important-dates">MM2024 Workshop Dates</a>)</td>
+                                <td><b style="color: red">August 19, 2024</b></td>
+                            </tr> -->
+
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            
+            <!-- / Paper video. -->
+            <div class="columns is-centered has-text-centered">
+                <div id="submission" class="column is-four-fifths">
+                    <h2 class="title is-3">Submission</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                             Please sumbit predicted results with a json files "results.json".
+                        </p>
+                        
+                        <pre id="jsonShow">
+<!-- 
+[
+{
+    "id": "test-0",
+    "event": [{
+        "trigger": "advance",
+        "type": "Transport",
+        "arguments": [{
+            "name": "elements",
+            "role": "Artifact"
+        }, {
+            "name": "city",
+            "role": "Origin"
+        }, {
+            "name": "Baghdad",
+            "role": "Destination"
+        }]
+    }]
+},
+{
+    "id": "test-1",
+    "event": [{
+       ...
+    }]
+},
+...
+]
+ -->
+</pre>
+                      
+<!--                         <p>
+                            Link to <a href="#">Codalab</a>
+                        </p>
+                        <p>
+                            
+                            Participants can submit at <a href="https://www.codabench.org/competitions/">Codabench</a>.
+                        </p>
+                        <p>
+                            
+                            We will review the submissions publish the ranking here. 
+                            Feel free to contact us at <a href="22021110280@stu.xidian.edu.cn">email</a>.
+                            
+                        
+                        </p> -->
+
+                        <p> Comming Soon </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- / Paper video. -->
+            <div class="columns is-centered has-text-centered">
+                <div id="baseline" class="column is-four-fifths">
+                    <h2 class="title is-3">Baseline</h2>
+                    <div class="content has-text-justified">
+                      
+                        <p>
+                            Link to the code <a href="https://github.com/AvaMERG/AvaMERG-Pipeline">AvaMERG-Pipeline</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        
+             <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Registration</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                             Welcome and please apply for the VSD challenge via a form at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuKXhaN5qa61rWlwaE3VpJD5FHcVLH25Un95wch6fCKiXIGQ/viewform?usp=sf_link">this link</a>.
+                        </p>
+                        <p>
+                            Feel free to contact us at <a href="mailto: vsdchallenge@gmail.com">vsdchallenge@gmail.com</a>.
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+
+            
+            
+            
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Rewards</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Top-ranked participants in this competition will receive a certificate of achievement and will be recommended to write a technical paper for submission to the <a>ACM MM 2025</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>   
+
+            <!-- / Paper video. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Organizers</h2>
+                    <div class="content has-text-justified">
+                        
+            <p>Han Zhang (Xidian University, Xi'an, China)</p>
+            <p>Hao Fei (National University of Singapore, Singapore)</p>
+            <p>Han Hong (Xidian University, Xi'an, China)</p>
+            <p>Lizi Liao (Singapore Management University, Singapore, Singapore)</p>
+            <p>Erik Cambria (Nanyang Technological University, Singapore, Singapore)</p>
+            <p>Min Zhang (Harbin Institute of Technology, Shenzhen, China)</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">References</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            
+                            [1] Zhang H, Meng Z, Luo M, et al. Towards Multimodal Empathetic Response Generation: A Rich Text-Speech-Vision Avatar-based Benchmark[C]//THE WEB CONFERENCE 2025.
+                        </p>
+                        <p>
+                            [2] Li Y A, Han C, Raghavan V, et al. Styletts 2: Towards human-level text-to-speech through style diffusion and adversarial training with large speech language models[J]. Advances in Neural Information Processing Systems, 2023, 36: 19594-19621.
+                        </p>
+                        <p>
+                            [3] Ma Y, Zhang S, Wang J, et al. DreamTalk: When Emotional Talking Head Generation Meets Diffusion Probabilistic Models[J]. arXiv preprint arXiv:2312.09767, 2023.
+                        </p>
+                       
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</body>
+<script>
+    // function jsonShowFn(json){
+    //     if (!json.match("^\{(.+:.+,*){1,}\}$")) {
+    //         return json           //判断是否是json数据，不是直接返回
+    //     }
+
+    //     if (typeof json != 'string') {
+    //         json = JSON.stringify(json, undefined, 2);
+    //     }
+    //     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    //     return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+    //         var cls = 'number';
+    //         if (/^"/.test(match)) {
+    //             if (/:$/.test(match)) {
+    //                 cls = 'key';
+    //             } else {
+    //                 cls = 'string';
+    //             }
+    //         } else if (/true|false/.test(match)) {
+    //             cls = 'boolean';
+    //         } else if (/null/.test(match)) {
+    //             cls = 'null';
+    //         }
+    //         return '<span class="' + cls + '">' + match + '</span>';
+    //     });
+    // }
+    // $('#jsonShow').html(jsonShowFn('[{"imd_id":1,"triple_list":["s":"book","o":"table"]}]'));
+</script>
+</html>
