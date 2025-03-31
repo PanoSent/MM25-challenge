@@ -167,77 +167,86 @@
             
 <!-- Abstract. -->
 <div id="introduction" class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-        <h2 class="title is-3">Introduction</h2>
-        <div class="content has-text-justified">
-            <p>
-                The MCABSA Challenge on the ACM MM platform focuses on multimodal conversational sentiment analysis and introduces two novel subtasks: <strong>(1) Panoptic Sentiment Sextuple Extraction</strong>, which requires identifying <em>holder, target, aspect, opinion, sentiment, and rationale</em> from multi-turn, multi-party multimodal dialogues; and <strong>(2) Sentiment Flipping Analysis</strong>, which aims to detect sentiment shifts throughout conversations along with their underlying causes. 
-            </p>
-        </div>
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Introduction</h2>
+    <div class="content has-text-justified">
+      <p>
+        The MCABSA Challenge on the ACM MM platform focuses on multimodal conversational sentiment analysis and introduces two novel subtasks: <strong>(1) Panoptic Sentiment Sextuple Extraction</strong>, which requires identifying <em>holder, target, aspect, opinion, sentiment, and rationale</em> from multi-turn, multi-party multimodal dialogues; and <strong>(2) Sentiment Flipping Analysis</strong>, which aims to detect sentiment shifts throughout conversations along with their underlying causes. 
+      </p>
     </div>
+  </div>
 </div>
 <!--/ Abstract. -->
 
 <!-- Paper video. -->
 <div id="task" class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-        <h2 class="title is-3">Challenge Task Definition and Metrics</h2>
-        <div class="content has-text-justified">
-            <div class="content has-text-centered">
-                <img src="/MM25-challenge/static/images/intro.png" width="60%" alt="">
-            </div>
-            <p>
-                <strong>Subtask-I: Panoptic Sentiment Sextuple Extraction.</strong> Given a dialogue D = {u<sub>1</sub>, ..., u<sub>n</sub>} with the replying structure {(u<sub>i</sub>, u<sub>j</sub>), ...} (i.e., u<sub>i</sub> replies to u<sub>j</sub>), the task is to extract all sextuples (h, t, a, o, s, r). Each utterance u<sub>i</sub> = {w<sub>1</sub>, ..., w<sub>m<sub>i</sub></sub>} contains m<sub>i</sub> words in the text (denoted as I<sup>t</sup>), occasionally with associated non-text information pieces, i.e., image (I<sup>i</sup>), audio (I<sup>a</sup>), or video (I<sup>v</sup>). The elements h (holder), t (target), a (aspect), o (opinion), and r (rationale) can be either continuous text spans explicitly mentioned in utterances, or implicitly inferred from context or non-text modalities. s represents the sentiment category (positive, negative, or neutral).
-            </p>
-            <div class="content has-text-centered">
-                <img src="/MM25-challenge/static/images/task2.png" width="90%" alt="">
-            </div>
-            <p>
-                <strong>Subtask-II: Sentiment Flipping Analysis.</strong> Given input D (same as in Subtask-I), this task aims to detect all sextuples (h, t, a, ζ, φ, τ). Here, h, t, and a denote the holder, target, and aspect, consistent with their definitions in Subtask-I. ζ and φ represent the initial and flipped sentiments, respectively, highlighting the dynamic change in sentiment by the same speaker toward the same aspect of the same target. τ refers to a trigger that induces the sentiment transition, which is chosen from four predefined categories: 1) <i>introduction of new information</i>, 2) <i>logical argumentation</i>, 3) <i>participant feedback and interaction</i>, and 4) <i>personal experience and self-reflection</i>. Since Subtask-II shares multiple elements with Subtask-I, flipping detection can naturally build upon Subtask-I results to minimize redundancy.
-            </p>
-        </div>
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Challenge Task Definition and Metrics</h2>
+    <div class="content has-text-justified">
+      <div class="has-text-centered">
+        <img src="/MM25-challenge/static/images/intro.png" width="60%" alt="">
+      </div>
+      <p>
+        <strong>Subtask-I: Panoptic Sentiment Sextuple Extraction.</strong> Given a dialogue D = {u<sub>1</sub>, ..., u<sub>n</sub>} with the replying structure {(u<sub>i</sub>, u<sub>j</sub>), ...} (i.e., u<sub>i</sub> replies to u<sub>j</sub>), the task is to extract all sextuples (h, t, a, o, s, r). Each utterance u<sub>i</sub> = {w<sub>1</sub>, ..., w<sub>m<sub>i</sub></sub>} contains m<sub>i</sub> words in the text (denoted as I<sup>t</sup>), occasionally with associated non-text information pieces, i.e., image (I<sup>i</sup>), audio (I<sup>a</sup>), or video (I<sup>v</sup>). The elements h (holder), t (target), a (aspect), o (opinion), and r (rationale) can be either continuous text spans explicitly mentioned in utterances, or implicitly inferred from context or non-text modalities. s represents the sentiment category (positive, negative, or neutral).
+      </p>
+      <div class="has-text-centered">
+        <img src="/MM25-challenge/static/images/task2.png" width="90%" alt="">
+      </div>
+      <p>
+        <strong>Subtask-II: Sentiment Flipping Analysis.</strong> Given input D (same as in Subtask-I), this task aims to detect all sextuples (h, t, a, ζ, φ, τ). Here, h, t, and a denote the holder, target, and aspect, consistent with their definitions in Subtask-I. ζ and φ represent the initial and flipped sentiments, respectively, highlighting the dynamic change in sentiment by the same speaker toward the same aspect of the same target. τ refers to a trigger that induces the sentiment transition, which is chosen from four predefined categories: 1) <i>introduction of new information</i>, 2) <i>logical argumentation</i>, 3) <i>participant feedback and interaction</i>, and 4) <i>personal experience and self-reflection</i>. Since Subtask-II shares multiple elements with Subtask-I, flipping detection can naturally build upon Subtask-I results to minimize redundancy.
+      </p>
     </div>
+  </div>
 </div>
 
+<!-- Evaluation -->
 <div class="columns is-centered has-text-centered">
-    <div class="column">
-        <h2 class="title is-3">Evaluation</h2>
-        <div class="content has-text-justified">
-            <p>
-                <strong>Subtask-I: Panoptic Sentiment Sextuple Extraction.</strong> We evaluate the overall performance of sextuple extraction using two metrics: <em>micro F1</em>, which measures the accuracy of the entire sextuple, and <em>identification F1</em>, which assesses the extraction quality excluding sentiment polarity. The final evaluation score is computed as the average of these two metrics.
-            </p>
-            <p>
-                <strong>Subtask-II: Sentiment Flipping Analysis.</strong> This subtask evaluates whether both the initial sentiment and flipped sentiment (Flip), along with the flipping trigger's category (Trig), are correctly predicted simultaneously. We use <em>exact match F1</em> as the evaluation metric.
-            </p>
-            <p>
-                We provide Python scripts for evaluation. Please refer to the <a href="#baseline">baseline codes</a> at <code>/challenge/evaluation.py</code>.
-            </p>
-        </div>
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Evaluation</h2>
+    <div class="content has-text-justified">
+      <p>
+        <strong>Subtask-I: Panoptic Sentiment Sextuple Extraction.</strong>
+        We evaluate the overall performance of sextuple extraction using two metrics:
+        <em>micro F1</em>, which measures the accuracy of the entire sextuple, and
+        <em>identification F1</em>, which assesses the extraction quality excluding sentiment polarity.
+        The final evaluation score is computed as the average of these two metrics.
+      </p>
+      <p>
+        <strong>Subtask-II: Sentiment Flipping Analysis.</strong>
+        This subtask evaluates whether both the initial sentiment and flipped sentiment (Flip),
+        along with the flipping trigger's category (Trig), are correctly predicted simultaneously.
+        We use <em>exact match F1</em> as the evaluation metric.
+      </p>
+      <p>
+        We provide Python scripts for evaluation. Please refer to the
+        <a href="#baseline">baseline codes</a> at <code>/challenge/evaluation.py</code>.
+      </p>
     </div>
+  </div>
 </div>
 
-    <!-- Datasets -->
-    <div class="columns is-centered has-text-centered">
-        <div id="dataset" class="column is-four-fifths">
-            <h2 class="title is-3">Dataset</h2>
-            <div class="content has-text-justified">
-                <p>
-                    The dataset for this challenge is based on <em>PanoSent</em>, a high-quality multimodal benchmark featuring multi-turn, multi-party dialogues. Each sample includes speaker identities, utterances, modality metadata, annotated sentiment elements (holder, target, aspect, opinion, sentiment, rationale), and sentiment flipping events for dynamic sentiment understanding.
-                </p>
-                <p>
-                    Statistics of PanoSent are shown in the following figure.
-                </p>
-                <div class="publication-image">
-                    <img width="60%" src="/MM25-challenge/static/images/statistics.png">
-                </div>
-                <br>
-                <p>
-                    Example of a sample:
-                </p>
-                <!-- Sample JSON or other content goes here -->
-            </div>
-        </div>
+<!-- Datasets -->
+<div class="columns is-centered has-text-centered">
+  <div id="dataset" class="column is-four-fifths">
+    <h2 class="title is-3">Dataset</h2>
+    <div class="content has-text-justified">
+      <p>
+        The dataset for this challenge is based on <em>PanoSent</em>, a high-quality multimodal benchmark featuring multi-turn, multi-party dialogues. Each sample includes speaker identities, utterances, modality metadata, annotated sentiment elements (holder, target, aspect, opinion, sentiment, rationale), and sentiment flipping events for dynamic sentiment understanding.
+      </p>
+      <p>
+        Statistics of PanoSent are shown in the following figure.
+      </p>
+      <div class="publication-image has-text-centered">
+        <img width="60%" src="/MM25-challenge/static/images/statistics.png">
+      </div>
+      <br>
+      <p>
+        Example of a sample:
+      </p>
+      <!-- Sample JSON or other content goes here -->
     </div>
+  </div>
+</div>
         
         <pre id="jsonShow">
         {
