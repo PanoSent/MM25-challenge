@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Avatar-based Multimodal Empathetic Conversation.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The ACM Multimedia 2025 Grand Challenge: Avatar-based Multimodal Empathetic Conversation</title>
+    <title>The ACM Multimedia 2025 Grand Challenge: Multimodal Conversational Aspect-based Sentiment Analysis</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -58,7 +58,7 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">The ACM Multimedia 2025 Grand Challenge of Avatar-based Multimodal Empathetic Conversation</h1>
+                        <h1 class="title is-1 publication-title">The ACM Multimedia 2025 Grand Challenge of Multimodal Conversational Aspect-based Sentiment Analysis</h1>
 
 
                         <div class="column has-text-centered">
@@ -173,15 +173,11 @@
 
                         <div style="text-align: center;">
                             <img src="static/images/overview.png" width="90%" alt="">
-                            <p><b>Overview: AvaMERG Task.</b></p>
+                            <p><b>Overview: MCABSA Task.</b></p>
                         </div>
 
                         <p>
-                            We propose the Avatar-based Multimodal Empathetic Response Generation (AvaMERG) challenge on the ACM MM platform. Unlike traditional text-only empathetic response tasks, given a multimodal dialogue context, models are expected to generate an empathetic response that includes three synchronized components: textual reply, emotive speech audio, and expressive talking face video. 
-                        </p>
-
-                        <p>
-                            The challenge contains three subtasks, from easy to hard.
+                            The MCABSA Challenge on the ACM MM platform focuses on multimodal conversational sentiment analysis and introduces two novel subtasks: <strong>(1) Panoptic Sentiment Sextuple Extraction</strong>strong>, which requires identifying <em>holder, target, aspect, opinion, sentiment, and rationale</em>em> from multi-turn, multi-party multimodal dialogues; and <strong>(2) Sentiment Flipping Analysis</strong>strong>, which aims to detect sentiment shifts throughout conversations along with their underlying causes. 
                         </p>
                     </div>
                 </div>
@@ -189,146 +185,311 @@
             <!--/ Abstract. -->
 
             <!-- Paper video. -->
-            <div id="task" div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Challenge Task Definition and Metrtics</h2>
-                    <div class="content has-text-justified">
-                        <div style="text-align: center;">
-                            <img src="static/images/task1.png" width="90%" alt="">
-                            <p><b>Task 1: Text-Only Empathetic Response Generation.</b></p>
-                        </div>
-                        <p>
-                            <b>Task-1:</b> Participants are required to develop a model capable of processing multimodal dialogue contexts and generating textual empathic responses, with each response being associated with a suitable emotional label. The evaluation of this subtask is the emotion prediction accuracy (Acc) and Distinct-n (Dist-1/2).
-                        </p>
-                        
-                        <div style="text-align: center;">
-                            <img src="static/images/task2.png" width="90%" alt="">
-                            <p><b>Task 2: Multimodal-Aware Empathetic Response Generation.</b></p>
-                        </div>
-                        <p>
-                            <b>Task-2:</b> Participants are required to develop a model capable of processing multimodal dialogue contexts and generating empathetic responses. The evaluation of this subtask is the emotion prediction accuracy (Acc) and Distinct-n (Dist-1/2).
-                        <p>
-                        
-                        <div style="text-align: center;">
-                            <img src="static/images/task3.png" width="90%" alt="">
-                            <p><b>Task 3: Multimodal Empathetic Response Generation.</b></p>
-                        </div>
-                        <p>
-                            <b>Task-3:</b> Participants are required to develop a model capable of processing multimodal dialogue contexts and generating empathetic multimodal responses. The evaluation of this subtask is based on four metrics: emotion prediction accuracy (Acc), Fréchet Audio Distance (FAD) and Structural Similarity Index Measure (SSIM).
-                        </p>
-                        
-                        <div class="columns is-centered has-text-centered">
-                            <div>
-                                <h2 class="title is-3">Evaluation</h2>
-                                <div class="content has-text-justified">
-                                    <p>
-                          
-                                        For Subtask 1 and Subtask 2, we will rank the participants based on the Acc score. In case of a tie in Acc, the ranking will be determined by the Dist-1/2 scores. For Subtask 3, the ranking will be determined according to the following formula:
-                                         <p>
-                                          <b><em>Score = Acc + 0.8*SSIM + 0.3*FAD</em></b>
-                                         </p>
-
-                                          We provide python scripts for evaluation, please refer to the <a href="#baseline">baseline codes</a> "/challenge/evaluation.py".
-                                </div>
-                            </div>
-                        </div>
-
-                        
-                    </div>
+            <div id="task" class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Challenge Task Definition and Metrics</h2>
+                <div class="content has-text-justified">
+            
+                  <div style="text-align: center;">
+                    <img src="/MM25-challenge/static/images/intro.png" width="60%" alt="">
+                    <p><b>Task 1: Text-Only Empathetic Response Generation.</b></p>
+                  </div>
+            
+                  <p>
+                    <strong>Subtask-I: Panoptic Sentiment Sextuple Extraction.</strong> Given a dialogue D = {u<sub>1</sub>, ..., u<sub>n</sub>} with the replying structure {(u<sub>i</sub>, u<sub>j</sub>), ...} (i.e., u<sub>i</sub> replies to u<sub>j</sub>), the task is to extract all sextuples (h, t, a, o, s, r). Each utterance u<sub>i</sub> = {w<sub>1</sub>, ..., w<sub>m<sub>i</sub></sub>} contains m<sub>i</sub> words in the text (denoted as I<sup>t</sup>), occasionally with associated non-text information pieces, i.e., image (I<sup>i</sup>), audio (I<sup>a</sup>), or video (I<sup>v</sup>). The elements h (holder), t (target), a (aspect), o (opinion), and r (rationale) can be either continuous text spans explicitly mentioned in utterances, or implicitly inferred from context or non-text modalities. s represents the sentiment category (positive, negative, or neutral).
+                  </p>
+            
+                  <div style="text-align: center;">
+                    <img src="/MM25-challenge/static/images/task2.png" width="90%" alt="">
+                  </div>
+            
+                  <p>
+                    <strong>Subtask-II: Sentiment Flipping Analysis.</strong> Given input D (same as in Subtask-I), this task aims to detect all sextuples (h, t, a, ζ, φ, τ). Here, h, t, and a denote the holder, target, and aspect, consistent with their definitions in Subtask-I. ζ and φ represent the initial and flipped sentiments, respectively, highlighting the dynamic change in sentiment by the same speaker toward the same aspect of the same target. τ refers to a trigger that induces the sentiment transition, which is chosen from four predefined categories: 
+                    1) <i>introduction of new information</i>, 
+                    2) <i>logical argumentation</i>, 
+                    3) <i>participant feedback and interaction</i>, and 
+                    4) <i>personal experience and self-reflection</i>. 
+                    Since Subtask-II shares multiple elements with Subtask-I, flipping detection can naturally build upon Subtask-I results to minimize redundancy.
+                  </p>
+            
                 </div>
+              </div>
             </div>
-             <!-- Datasets. -->
+                        
             <div class="columns is-centered has-text-centered">
-                <div id="dataset" class="column is-four-fifths">
-                    <h2 class="title is-3">Dataset</h2>
-                    <div class="content has-text-justified">
-                        <p>
-                            The dataset for this challenge is derived from AvaMERG. It is a benchmark dataset for Avatar-based Multimodal Empathetic Response Generation. AvaMERG extended the original Empathetic Dialogue dataset by considering multimodal response. 
-                        </p>
+              <div>
+                <h2 class="title is-3">Evaluation</h2>
+                <div class="content has-text-justified">
+                  <p>
+                    <strong>Subtask-I: Panoptic Sentiment Sextuple Extraction.</strong> We evaluate the overall performance of sextuple extraction using two metrics:
+                    <em>micro F1</em>, which measures the accuracy of the entire sextuple, and <em>identification F1</em>, which assesses the extraction quality excluding sentiment polarity. The final evaluation score is computed as the average of these two metrics.
+                  </p>
+            
+                  <p>
+                    <strong>Subtask-II: Sentiment Flipping Analysis.</strong> This subtask evaluates whether both the initial sentiment and flipped sentiment (Flip), along with the flipping trigger's category (Trig), are correctly predicted simultaneously. We use <em>exact match F1</em> as the evaluation metric.
+                  </p>
+            
+                  <p>
+                    We provide Python scripts for evaluation. Please refer to the <a href="#baseline">baseline codes</a> at <code>/challenge/evaluation.py</code>.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-                        <p>
-                            Statistics of AvaMERG are shown in the following table.
-                        </p>
-                        <div class="publication-image">
-                            <img width="100%" src="/MM25-challenge/static/images/statistics.png">
-                          </div>
-                          <br>
-                        <p>
-                            Example of a sample:
-                        </p>
-                        <pre id="jsonShow">
-{
-    "conversation_id": "01118",
-    "speaker_profile": {
-        "age": "young", 
-        "gender": "male",
-        "timbre": "high",
-        "ID": 28
-    },
-    "listener_profile": {
-        "age": "young",
-        "gender": "female",
-        "timbre": "mid",
-        "ID": 18
-    },
-    "topic": "Life Events",
-    "turns": [
+        <!-- Datasets -->
+        <div class="columns is-centered has-text-centered">
+          <div id="dataset" class="column is-four-fifths">
+            <h2 class="title is-3">Dataset</h2>
+            <div class="content has-text-justified">
+              <p>
+                The dataset for this challenge is based on <em>PanoSent</em>, a high-quality multimodal benchmark featuring multi-turn, multi-party dialogues. Each sample includes speaker identities, utterances, modality metadata, annotated sentiment elements (holder, target, aspect, opinion, sentiment, rationale), and sentiment flipping events for dynamic sentiment understanding.
+              </p>
+        
+              <p>
+                Statistics of PanoSent are shown in the following figure.
+              </p>
+        
+              <div class="publication-image">
+                <img width="60%" src="/MM25-challenge/static/images/statistics.png">
+              </div>
+        
+              <br>
+              <p>
+                Example of a sample:
+              </p>
+        
+        <pre id="jsonShow">
         {
-            "turn_id": "0",
-            "context": "I was shocked when the Eagles won the Super Bowl.",
-            "dialogue_history": [
+            "doc_id": "00002",
+            "speakers": [
                 {
-                    "index": 0,
-                    "role": "speaker",
-                    "utterance": "I was shocked when the Eagles won the Super Bowl."
+                    "id": 0,
+                    "name": "Ella"
+                },
+                {
+                    "id": 1,
+                    "name": "Max"
+                },
+                {
+                    "id": 2,
+                    "name": "Sophie"
+                },
+                {
+                    "id": 3,
+                    "name": "Liam"
                 }
             ],
-            "response": "Yes, I think everyone was shocked! The real question is, were you happy?",
-            "chain_of_empathy": {
-                "speaker_emotion": "surprised",
-                "event_scenario": "The Eagles winning the Super Bowl",
-                "emotion_cause": "Surprise at an unexpected sports victory",
-                "goal_to_response": "Determining the speaker's happiness about the win"
-            }
-        },
-        {
-            "turn_id": "1",
-            "context": "I was shocked when the Eagles won the Super Bowl.",
-            "dialogue_history": [
+            "dialogue": [
                 {
                     "index": 0,
-                    "role": "speaker",
-                    "utterance": "I was shocked when the Eagles won the Super Bowl."
+                    "speaker": 0,
+                    "utterance": "I believe the graphics on my new gaming PC are stunning; they're incredibly immersive.",
+                    "annotation": "I believe the <aspect_01> graphics </aspect_01> on my <target_01> new gaming PC </target_01> are <opinion_01> stunning </opinion_01>; <rationale_01> they're incredibly immersive </rationale_01>.",
+                    "modality": {
+                        "type": "img",
+                        "caption": "High-resolution graphics from a gaming PC displaying an expansive fantasy landscape.",
+                        "id": "img_0001"
+                    },
+                    "reply": -1
                 },
                 {
                     "index": 1,
-                    "role": "listener",
-                    "utterance": "Yes, I think everyone was shocked! The real question is, were you happy?"
+                    "speaker": 1,
+                    "utterance": "Absolutely, but I think the audio quality could be more refined to match that level of graphics.",
+                    "annotation": "Absolutely, but I think the <aspect_02> audio quality </aspect_02> <opinion_02> could be more refined </opinion_02> to <rationale_02> match that level of graphics </rationale_02>.",
+                    "modality": "None",
+                    "reply": 0
                 },
                 {
                     "index": 2,
-                    "role": "speaker",
-                    "utterance": "I was very happy."
+                    "speaker": 2,
+                    "utterance": "The cooling system in PCs is crucial, I once faced overheating issues which hindered performance significantly.",
+                    "annotation": "The <aspect_03> cooling system </aspect_03> in PCs is <opinion_03> crucial </opinion_03>, <rationale_03> I once faced overheating issues which hindered performance significantly </rationale_03>.",
+                    "modality": {
+                        "type": "vid",
+                        "caption": "Video showing a PC with high-performance cooling components in action.",
+                        "id": "vid_0002"
+                    },
+                    "reply": 1
+                },
+                {
+                    "index": 3,
+                    "speaker": 3,
+                    "utterance": "True, but I feel like the build quality of the gaming PC is somewhat cheap; it feels less durable.",
+                    "annotation": "True, but I feel like the <aspect_04> build quality </aspect_04> of the <target_01> gaming PC </target_01> is <opinion_04> somewhat cheap </opinion_04>; <rationale_04> it feels less durable </rationale_04>.",
+                    "modality": "None",
+                    "reply": 2
+                },
+                {
+                    "index": 4,
+                    "speaker": 0,
+                    "utterance": "I initially agreed with you about the build quality, but after a month of using it, I appreciate its lightweight design for portability.",
+                    "annotation": "I initially agreed with you about the <aspect_04> build quality </aspect_04>, but <rationale_05> after a month of using it, I appreciate its lightweight design for portability </rationale_05>.",
+                    "modality": "None",
+                    "reply": 3
                 }
             ],
-            "response": "That's awesome.. Hopefully they win again in the future!",
-            "chain_of_empathy": {
-                "speaker_emotion": "surprised",
-                "event_scenario": "The Philadelphia Eagles winning the Super Bowl.",
-                "emotion_cause": "Unexpected victory of the Eagles in the Super Bowl.",
-                "goal_to_response": "Reinforcing happiness and optimism about future games."
-            }
+            "hexatuple": [
+                {
+                    "holder": {
+                        "identity": "holder_01",
+                        "value": "Ella",
+                        "manner": "explicit"
+                    },
+                    "target": {
+                        "identity": "target_01",
+                        "value": "new gaming PC",
+                        "manner": "explicit"
+                    },
+                    "aspect": {
+                        "identity": "aspect_01",
+                        "value": "graphics",
+                        "manner": "explicit"
+                    },
+                    "opinion": {
+                        "identity": "opinion_01",
+                        "value": "stunning",
+                        "manner": "explicit"
+                    },
+                    "sentiment": "positive",
+                    "rationale": {
+                        "identity": "rationale_01",
+                        "value": "they're incredibly immersive",
+                        "manner": "explicit"
+                    }
+                },
+                {
+                    "holder": {
+                        "identity": "holder_02",
+                        "value": "Max",
+                        "manner": "explicit"
+                    },
+                    "target": {
+                        "identity": "target_01",
+                        "value": "new gaming PC",
+                        "manner": "explicit"
+                    },
+                    "aspect": {
+                        "identity": "aspect_02",
+                        "value": "audio quality",
+                        "manner": "explicit"
+                    },
+                    "opinion": {
+                        "identity": "opinion_02",
+                        "value": "could be more refined",
+                        "manner": "explicit"
+                    },
+                    "sentiment": "neutral",
+                    "rationale": {
+                        "identity": "rationale_02",
+                        "value": "to match that level of graphics",
+                        "manner": "explicit"
+                    }
+                },
+                {
+                    "holder": {
+                        "identity": "holder_03",
+                        "value": "Sophie",
+                        "manner": "explicit"
+                    },
+                    "target": {
+                        "identity": "target_01",
+                        "value": "PCs",
+                        "manner": "explicit"
+                    },
+                    "aspect": {
+                        "identity": "aspect_03",
+                        "value": "cooling system",
+                        "manner": "explicit"
+                    },
+                    "opinion": {
+                        "identity": "opinion_03",
+                        "value": "crucial",
+                        "manner": "explicit"
+                    },
+                    "sentiment": "positive",
+                    "rationale": {
+                        "identity": "rationale_03",
+                        "value": "I once faced overheating issues which hindered performance significantly",
+                        "manner": "explicit"
+                    }
+                },
+                {
+                    "holder": {
+                        "identity": "holder_04",
+                        "value": "Liam",
+                        "manner": "explicit"
+                    },
+                    "target": {
+                        "identity": "target_01",
+                        "value": "gaming PC",
+                        "manner": "explicit"
+                    },
+                    "aspect": {
+                        "identity": "aspect_04",
+                        "value": "build quality",
+                        "manner": "explicit"
+                    },
+                    "opinion": {
+                        "identity": "opinion_04",
+                        "value": "somewhat cheap",
+                        "manner": "explicit"
+                    },
+                    "sentiment": "negative",
+                    "rationale": {
+                        "identity": "rationale_04",
+                        "value": "it feels less durable",
+                        "manner": "explicit"
+                    }
+                },
+                {
+                    "holder": {
+                        "identity": "holder_01",
+                        "value": "Ella",
+                        "manner": "explicit"
+                    },
+                    "target": {
+                        "identity": "target_01",
+                        "value": "gaming PC",
+                        "manner": "explicit"
+                    },
+                    "aspect": {
+                        "identity": "aspect_04",
+                        "value": "build quality",
+                        "manner": "explicit"
+                    },
+                    "opinion": {
+                        "identity": "opinion_05",
+                        "value": "appreciate its lightweight design",
+                        "manner": "explicit"
+                    },
+                    "sentiment": "positive",
+                    "rationale": {
+                        "identity": "rationale_05",
+                        "value": "for portability",
+                        "manner": "explicit"
+                    }
+                }
+            ],
+            "sentiment flip": [
+                {
+                    "holder": "Ella",
+                    "target": "gaming PC",
+                    "aspect": "build quality",
+                    "initial sentiment": "negative",
+                    "flipped sentiment": "positive",
+                    "trigger type": "Personal Experiences and Self-reflection"
+                }
+            ]
         }
-    ]
-},</pre>
-                        <p>
-                            The datasets (audio/video) have been avaliable on <a href="https://pan.baidu.com/s/1flf2ZOfRAnEqPcSUUBJnMg?pwd=ih5n ">Baidu Drive</a> and the label json files are in the <a href="#baseline">baseline codes/data/</a>.
-                        </p>
-
-                    </div>
-                </div>
+        </pre>
+        
+              <p>
+                The dataset multimedia resources can be downloaded from <a href="https://pan.baidu.com/s/1flf2ZOfRAnEqPcSUUBJnMg?pwd=ih5n">Baidu Drive</a>, and the label files are available in the <a href="#baseline">baseline codes/data/</a> directory.
+              </p>
             </div>
-
+          </div>
+        </div>
 
 
             <div class="columns is-centered has-text-centered">
@@ -377,10 +538,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
 
 
             
@@ -451,26 +608,26 @@
                     <div class="content has-text-justified">
                       
                         <p>
-                            Link to the code <a href="https://github.com/AvaMERG/AvaMERG-Pipeline">AvaMERG-Pipeline</a>
+                            Link to the code <a href="https://github.com/PanoSent/PanoSent">PanoSent-baseline</a>
                         </p>
                     </div>
                 </div>
             </div>
             
         
-             <!-- <div class="columns is-centered has-text-centered">
+            <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Registration</h2>
                     <div class="content has-text-justified">
                         <p>
-                             Welcome and please apply for the VSD challenge via a form at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuKXhaN5qa61rWlwaE3VpJD5FHcVLH25Un95wch6fCKiXIGQ/viewform?usp=sf_link">this link</a>.
+                             Welcome and please apply for the MCABSA challenge via a form at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuKXhaN5qa61rWlwaE3VpJD5FHcVLH25Un95wch6fCKiXIGQ/viewform?usp=sf_link">this link</a>.
                         </p>
                         <p>
-                            Feel free to contact us at <a href="mailto: vsdchallenge@gmail.com">vsdchallenge@gmail.com</a>.
+                            Feel free to contact us at <a href="mailto: mcabsachallenge@gmail.com">mcabsachallenge@gmail.com</a>.
                         </p>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             
             
@@ -488,19 +645,38 @@
 
             <!-- / Paper video. -->
             <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Organizers</h2>
-                    <div class="content has-text-justified">
-                        
-            <p>Han Zhang (Xidian University, Xi'an, China)</p>
-            <p>Hao Fei (National University of Singapore, Singapore)</p>
-            <p>Han Hong (Xidian University, Xi'an, China)</p>
-            <p>Lizi Liao (Singapore Management University, Singapore, Singapore)</p>
-            <p>Erik Cambria (Nanyang Technological University, Singapore, Singapore)</p>
-            <p>Min Zhang (Harbin Institute of Technology, Shenzhen, China)</p>
-
-                    </div>
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Organizers</h2>
+                <div class="content has-text-justified">
+                  <p>
+                    <a href="https://github.com/Eurekaleo/">Meng Luo</a>. National University of Singapore, Singapore.
+                  </p>
+                  <p>
+                    <a href="https://haofei.vip/">Hao Fei</a>. National University of Singapore, Singapore.
+                  </p>
+                  <p>
+                    <a href="https://scholar.google.com.hk/citations?user=90mnP8MAAAAJ&hl=en">Bobo Li</a>. Wuhan University, China.
+                  </p>
+                  <p>
+                    <a href="https://chocowu.github.io/">Shengqiong Wu</a>. National University of Singapore, Singapore.
+                  </p>
+                  <p>
+                    <a href="https://profiles.auckland.ac.nz/liu-qian">Qian Liu</a>. The University of Auckland, New Zealand.
+                  </p>
+                  <p>
+                    <a href="https://scholar.google.com.sg/citations?user=oS6gRc4AAAAJ&hl=en">Soujanya Poria</a>. Singapore University of Technology and Design, Singapore.
+                  </p>
+                  <p>
+                    <a href="https://scholar.google.com/citations?user=ilSYpW0AAAAJ&hl=en">Erik Cambria</a>. Nanyang Technological University, Singapore.
+                  </p>
+                  <p>
+                    <a href="https://www.comp.nus.edu.sg/~leeml/">Mong-Li Lee</a>. National University of Singapore, Singapore.
+                  </p>
+                  <p>
+                    <a href="https://www.comp.nus.edu.sg/~whsu/">Wynne Hsu</a>. National University of Singapore, Singapore.
+                  </p>
                 </div>
+              </div>
             </div>
 
 
@@ -510,15 +686,11 @@
                     <div class="content has-text-justified">
                         <p>
                             
-                            [1] Zhang H, Meng Z, Luo M, et al. Towards Multimodal Empathetic Response Generation: A Rich Text-Speech-Vision Avatar-based Benchmark[C]//THE WEB CONFERENCE 2025.
+                            [1] Luo, Meng, et al. "Panosent: A panoptic sextuple extraction benchmark for multimodal conversational aspect-based sentiment analysis." Proceedings of the 32nd ACM International Conference on Multimedia. 2024.
                         </p>
                         <p>
-                            [2] Li Y A, Han C, Raghavan V, et al. Styletts 2: Towards human-level text-to-speech through style diffusion and adversarial training with large speech language models[J]. Advances in Neural Information Processing Systems, 2023, 36: 19594-19621.
+                            [2] Luo, Meng, et al. "Nus-emo at semeval-2024 task 3: Instruction-tuning llm for multimodal emotion-cause analysis in conversations." arXiv preprint arXiv:2501.17261 (2024).
                         </p>
-                        <p>
-                            [3] Ma Y, Zhang S, Wang J, et al. DreamTalk: When Emotional Talking Head Generation Meets Diffusion Probabilistic Models[J]. arXiv preprint arXiv:2312.09767, 2023.
-                        </p>
-                       
                      
                     </div>
                 </div>
