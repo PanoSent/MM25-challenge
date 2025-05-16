@@ -49,8 +49,41 @@
         ._table td{line-height: 20px; text-align: center; padding: 4px 10px 3px 10px; height: 18px;border: 0px solid #ffffff;}
         ._table tbody tr {background: #fff; font-size: 13px; color: #393939;}
         ._table tbody tr:nth-child(2n){ background: #f3f3f3;}
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;       
+            font-weight: 800;       
+            margin-bottom: 1em;
+        }
+    
+        .team-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1em;
+          max-width: 900px;
+          margin: 2em auto;
+        }
+    
+        .team-card {
+          background-color: #ffffff;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          padding: 1em;
+          text-align: center;
+          font-weight: bold;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+          transition: transform 0.2s ease;
+        }
+    
+        .team-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
+
 
 <body>
 
@@ -172,6 +205,31 @@
                     </div>
                 </div>
             </div> -->
+
+
+ <h1>Teams Successfully Registered</h1>
+
+  <div class="team-container">
+    <div class="team-card">He‘s mates</div>
+    <div class="team-card">STU-ZZG</div>
+    <div class="team-card">DZ</div>
+    <div class="team-card">smiles lab acmmm2025</div>
+    <div class="team-card">EchoEmotion</div>
+    <div class="team-card">xAGI</div>
+    <div class="team-card">AI4AI</div>
+    <div class="team-card">HaHaHa Team</div>
+    <div class="team-card">CCNU-team</div>
+    <div class="team-card">SYSU_RUNNER</div>
+    <div class="team-card">Timi</div>
+    <div class="team-card">IMS</div>
+    <div class="team-card">GZYZWYQH</div>
+    <div class="team-card">NeuChamp</div>
+    <div class="team-card">TalkingHead-Runner</div>
+    <div class="team-card">free style</div>
+    <div class="team-card">ERC</div>
+    <div class="team-card">SuperEmoNLP</div>
+    <div class="team-card">PKBJ</div>
+  </div>     
 
             <!-- News -->
 <div class="columns is-centered has-text-centered">
