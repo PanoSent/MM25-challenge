@@ -247,13 +247,9 @@
       <h2 class="title is-3">🔔News</h2>
       <div class="content has-text-justified">
         <p>
-<!--           <b>🔥 [2025-03-31]: We again extend the workshop direct submission deadline from Mar 31 to <span style="color: #E84545;">Apr 6, 2025 (AoE)</span>! Welcome submissions and don't miss the boat!</b><br>
-          
-          <b>🔥 [2025-03-14]: We extend the workshop direct submission deadline from Mar 18 to <span style="color: #E84545;">Mar 31, 2025</span>! Welcome submissions!</b><br>
-          <b>🔥 [2025-03-12]: We extend all the shared task deadlines all to <span style="color: #E84545;">Apr 6, 2025</span>! Welcome participation!</b><br>
-          <b>🔥 [2025-02-10]: All our data of shared tasks are released! Welcome participation!</b><br>
-          <b>🔥 [2025-02-05]: Second round of call for paper and participation is out! Welcome submissions!</b><br> -->
 
+          <b>🔥 [2025-06-09]: We have released the test set. The test set is available at: https://huggingface.co/datasets/Eureka-Leo/MCABSA_testset</b><br>
+            
           <b>🔥 [2025-05-28]: Please note! The Evaluation stage has been postponed to 10 June, and the Evaluation end time has accordingly been postponed to 26 June.</b><br>
         
           <b>🔥 [2025-05-21]: The registration stage has been extended to 31 May.</b><br>
@@ -265,6 +261,52 @@
   </div>
 </div>
 
+
+<h2>📊 Team Scores for Task 1 and Task 2 (updated on 10 June)</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; text-align: center;">
+  <thead>
+    <tr>
+      <th>Team Name</th>
+      <th>Task 1 Score</th>
+      <th>Task 2 Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>SNgroup</td><td></td><td></td></tr>
+    <tr><td>CUFE</td><td></td><td></td></tr>
+    <tr><td>EmoG</td><td></td><td></td></tr>
+    <tr><td>Mature Colors</td><td></td><td></td></tr>
+    <tr><td>Incredible Peter</td><td></td><td></td></tr>
+    <tr><td>SmolLab_SEU</td><td></td><td></td></tr>
+    <tr><td>Hermeneutic8</td><td></td><td></td></tr>
+    <tr><td>Fosafer Research</td><td></td><td></td></tr>
+    <tr><td>wcqy</td><td></td><td></td></tr>
+    <tr><td>MLLM</td><td></td><td></td></tr>
+    <tr><td>taylor</td><td></td><td></td></tr>
+    <tr><td>test</td><td></td><td></td></tr>
+    <tr><td>HNU-SMILE</td><td></td><td></td></tr>
+    <tr><td>SudaAI_FU</td><td></td><td></td></tr>
+    <tr><td>我写的代码都队</td><td></td><td></td></tr>
+    <tr><td>DeepTower</td><td></td><td></td></tr>
+    <tr><td>bupt-mmai</td><td></td><td></td></tr>
+    <tr><td>MCABSA_Alpha_1</td><td></td><td></td></tr>
+    <tr><td>YNU-HPCC</td><td></td><td></td></tr>
+    <tr><td>jncsnlp</td><td></td><td></td></tr>
+    <tr><td>Cyan is Cyan</td><td></td><td></td></tr>
+    <tr><td>SYSUpporter</td><td></td><td></td></tr>
+    <tr><td>HandX</td><td></td><td></td></tr>
+    <tr><td>The Sentinels</td><td></td><td></td></tr>
+    <tr><td>Happy Team</td><td></td><td></td></tr>
+    <tr><td>Future</td><td></td><td></td></tr>
+    <tr><td>New Buds</td><td></td><td></td></tr>
+    <tr><td>troth</td><td></td><td></td></tr>
+    <tr><td>SMG03</td><td></td><td></td></tr>
+    <tr><td>New Folder</td><td></td><td></td></tr>
+    <tr><td>willen</td><td></td><td></td></tr>
+    <tr><td>silp_nlp</td><td></td><td></td></tr>
+  </tbody>
+</table>
             
             
 <!-- Abstract. -->
@@ -351,7 +393,83 @@
     </div>
   </div>
 </div>
-        
+        <p><b>📌 Format for Submitted JSON Files by Participants:</b></p>
+
+<b>Task 1:</b>
+<pre>
+[
+  {
+    "doc_id": "0001",
+    "hexatuple": [
+      {
+        "holder": { "value": "Harper" },
+        "target": { "value": "Modern Visions exhibition" },
+        "aspect": { "value": "lighting" },
+        "opinion": { "value": "exceptional" },
+        "sentiment": "positive",
+        "rationale": { "value": "It highlights each painting's color and texture beautifully" }
+      },
+      {
+        "holder": { "value": "Gabriel" },
+        "target": { "value": "sculpture section" },
+        "aspect": { "value": "curation" },
+        "opinion": { "value": "confusing" },
+        "sentiment": "negative",
+        "rationale": { "value": "especially since the arrangement seemed somewhat random to me" }
+      },
+      ...
+    ]
+  },
+  {
+    "doc_id": "0002",
+    "hexatuple": [
+      {
+        "holder": { "value": "Sana" },
+        "target": { "value": "the Lunar New Year Festival" },
+        "aspect": { "value": "organization" },
+        "opinion": { "value": "stands out" },
+        "sentiment": "positive",
+        "rationale": { "value": "From the parade to the food stalls, everything seems to run so smoothly" }
+      },
+      ...
+    ]
+  }
+]
+</pre>
+
+<b>Task 2:</b>
+<pre>
+[
+  {
+    "doc_id": "0001",
+    "sentiment flip": [
+      {
+        "holder": "Derek",
+        "target": "exhibition space lighting",
+        "aspect": "lighting",
+        "initial sentiment": "positive",
+        "flipped sentiment": "negative",
+        "trigger type": "Participant Feedback and Interaction"
+      }
+    ]
+  },
+  {
+    "doc_id": "0002",
+    "sentiment flip": [
+      {
+        "holder": "Rachel",
+        "target": "The Glass Menagerie",
+        "aspect": "lighting design",
+        "initial sentiment": "negative",
+        "flipped sentiment": "positive",
+        "trigger type": "Participant Feedback and Interaction"
+      }
+    ]
+  }
+]
+</pre>
+
+            
         <pre id="jsonShow">
         {
             "doc_id": "00002",
